@@ -15,7 +15,7 @@
     "dbon": "mkdir -p ./db && mongod --dbpath ./db",
     "dboff": "killall mongod",
     "build": "babel src -d build",
-    "start": "node src -d build && index.js"
+    "start": "babel src -d build && node index.js"
   },
   "jest": {
     "setupFiles": [
