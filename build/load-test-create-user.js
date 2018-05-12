@@ -1,0 +1,19 @@
+'use strict';
+
+var faker = require('faker');
+var loadTestUser = module.exports = {};
+
+loadTestUser.create = function (userContext, event, done) {
+  userContext.vars.username = faker.internet.userName() + Math.random().toString();
+  userContext.vars.email = faker.internet.email();
+  userContext.vars.password = faker.internet.password() + Math.random().toString();
+
+  userContext.vars.bio = faker.lorem.words(10);
+  userContext.vars.avatar = faker.image.imageUrl();
+  userContext.vars.firstName = faker.lorem.username();
+  userContext.vars.lastName = faker.lorem.username();
+};
+
+// in oldschool es5 functions, when we doing async, we often have to call done, indicate we done
+
+// Math.random, beause faker can't actually create enough unique values to reliably create truly unique usernames etc
